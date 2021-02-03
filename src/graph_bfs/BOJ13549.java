@@ -22,7 +22,6 @@ public class BOJ13549 {
             int size = q.size();
             for(int i = 0;i<size;i++){
                 int next = q.poll();
-                while()
             }
             time++;
         }
