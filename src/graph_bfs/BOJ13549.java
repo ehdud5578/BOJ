@@ -2,6 +2,7 @@ package graph_bfs;
 
 import java.io.*;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
@@ -22,8 +23,32 @@ public class BOJ13549 {
             int size = q.size();
             for(int i = 0;i<size;i++){
                 int next = q.poll();
+                q.add(next);
+                while (next>0&&next<=2*k&&next<=100000){
+                    if(next==k)
+                        break qq;
+                    if(!board[next]){
+                           board[next] = true;
+                           q.add(next);
+                    }
+                    next = next*2;
+                }
             }
             time++;
+            size =  q.size();
+            for(int i = 0;i<size;i++){
+                int now = q.poll();
+                if(now-1==k||now+1==k)
+                    break qq;
+                if(now-1>=0&&!board[now-1]){
+                    board[now-1] = true;
+                    q.add(now-1);
+                }
+                if(now+1<=100000&&!board[now+1]){
+                    board[now+1] = true;
+                    q.add(now+1);
+                }
+            }
         }
         bw.write(String.valueOf(time));
         bw.flush();
