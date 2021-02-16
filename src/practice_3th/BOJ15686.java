@@ -43,10 +43,10 @@ public class BOJ15686 {
             }
         }
         checkm = new boolean[chicken.size()];
-        dfs(0);
+        dfs(0,0);
         System.out.println(result);
     }
-    public static void dfs(int v){
+    public static void dfs(int start, int v){
         if(v==m){
             int thiscaseresult = 0;
             for (int[] ints : home) {
@@ -67,7 +67,7 @@ public class BOJ15686 {
                                     thiscaseresult = thiscaseresult + tempresult;
                                     break qq;
                                 }
-                                if (board[ny][nx] == 0) {
+                                if (board[ny][nx] == 0||board[ny][nx] == 1) {
                                     visited[ny][nx] = true;
                                     q.add(new int[]{ny, nx});
                                 }
@@ -79,7 +79,22 @@ public class BOJ15686 {
             result = Math.min(result,thiscaseresult);
             return;
         }
-        for(int i = 0;i< chicken.size();i++){
+        for(int i = start;i< chicken.size();i++){
+            if(checkm[i])
+                continue;
+            checkm[i] = true;
+            int[] now = chicken.get(i);
+            board[now[0]][now[1]] = 2;
+            dfs(i,v+1);
+            board[now[0]][now[1]] = 0;
+            checkm[i] = false;
+        }
+    }
+}
+
+/*
+dfs 를 만들때 중복을 제거한 조합을 찾는 방법이기 때문에 잘 써야한다.
+for(int i = 0;i< chicken.size();i++){
             if(checkm[i])
                 continue;
             checkm[i] = true;
@@ -89,5 +104,5 @@ public class BOJ15686 {
             board[now[0]][now[1]] = 0;
             checkm[i] = false;
         }
-    }
-}
+와 같이 했었는데 바로 시간초과...
+ */
