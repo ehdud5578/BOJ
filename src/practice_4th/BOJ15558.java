@@ -51,7 +51,7 @@ public class BOJ15558 {
                 if (now.y != 1) {
                     nexty = 1;
                 }
-                if(now.x+k<=100000&&danger[nexty][now.x+k]&&!visited[nexty][now.x+k]){
+                if(now.x+k<=200000&&danger[nexty][now.x+k]&&!visited[nexty][now.x+k]){
                     visited[nexty][now.x+k] = true;
                     q.add(new Point(now.x+k,nexty));
                 }
@@ -64,3 +64,8 @@ public class BOJ15558 {
             System.out.println("0");
     }
 }
+/*
+if(now.x+k<=200000&&danger[nexty][now.x+k]&&!visited[nexty][now.x+k]){
+조건문에서 200000 을써야하는데 100000을썻음
+
+ */
