@@ -1,9 +1,10 @@
 package practice_4th;
 
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Arrays;
+import java.util.PriorityQueue;
+import java.util.StringTokenizer;
 
 public class BOJ16236 {
     static int n, babyx, babyy, time, result;
@@ -42,6 +43,7 @@ public class BOJ16236 {
                 int nowy = nowloc.y;
                 if (board[nowy][nowx] < babyshark[0] && 0 != board[nowy][nowx]) {
                     q.clear();
+                    nextq.clear();
                     size = 1;
                     babyshark[1]++;
                     result = time;
@@ -67,8 +69,9 @@ public class BOJ16236 {
             }
             time++;
             if(q.isEmpty()){
-                q.addAll(nextq);
-                nextq.clear();
+                while(!nextq.isEmpty()){
+                    q.add(nextq.poll());
+                }
             }
         }
         System.out.println(result);
@@ -85,9 +88,9 @@ class Point implements Comparable<Point>{
 
     @Override
     public int compareTo(Point p) {
-        if(p.y!=this.y)
-            return this.y < p.y?1:-1;
+        if(p.y==this.y)
+            return this.x > p.x?1:-1;
         else
-            return this.x < p.x?1:-1;
+            return this.y > p.y?1:-1;
     }
 }
