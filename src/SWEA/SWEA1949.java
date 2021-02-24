@@ -11,7 +11,6 @@ public class SWEA1949 {
     static int testcase, h, w, result, maxvalue;
     static int[][] board;
     static int[] dy, dx;
-    static boolean[][] visited;
     static ArrayList<int[]> maxlist;
 
     public static void main(String[] args) throws Exception {
@@ -28,15 +27,10 @@ public class SWEA1949 {
             h = Integer.parseInt(stz.nextToken());
             w = Integer.parseInt(stz.nextToken());
             board = new int[h][h];
-            visited = new boolean[h][h];
             for (int i = 0; i < h; i++) {
                 stz = new StringTokenizer(br.readLine());
                 for (int j = 0; j < h; j++) {
                     board[i][j] = Integer.parseInt(stz.nextToken());
-                }
-            }
-            for (int i = 0; i < h; i++) {
-                for (int j = 0; j < h; j++) {
                     maxvalue = Math.max(maxvalue, board[i][j]);
                 }
             }
@@ -66,16 +60,14 @@ public class SWEA1949 {
         if (v > result)
             result = v;
         int thisvalue = board[max[0]][max[1]];
-        visited[max[0]][max[1]] = true;
         for (int i = 0; i < 4; i++) {
             int ny = max[0] + dy[i];
             int nx = max[1] + dx[i];
             if (ny >= 0 && ny < h && nx >= 0 && nx < h) {
-                if (thisvalue > board[ny][nx] && !visited[ny][nx]) {
+                if (thisvalue > board[ny][nx]) {
                     dfs(v + 1, new int[]{ny, nx});
                 }
             }
         }
-        visited[max[0]][max[1]] = false;
     }
 }
