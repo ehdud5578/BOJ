@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class BOJ17837 {
-    static int n, k, reuslt;
+    static int n, k;
     static int[][] board;
     static Horse[] horses;
     static int[] dy, dx; //0,→, ←, ↑, ↓
@@ -19,7 +19,6 @@ public class BOJ17837 {
         n = Integer.parseInt(stz.nextToken());
         k = Integer.parseInt(stz.nextToken());
         board = new int[n+1][n+1];
-        reuslt = -1;
         for (int i = 1; i <= n; i++) {     //0은 흰색, 1은 빨간색, 2는 파란색
             stz = new StringTokenizer(br.readLine());
             for (int j = 1; j <= n; j++) {
@@ -45,7 +44,7 @@ public class BOJ17837 {
     }
     public static void gamestart(){
         int time = 0;
-        while(time<=1000){
+        while(time<1000){
             time++;
             for(int i = 1;i<=k;i++){
                 if (move(i)) {
@@ -54,8 +53,9 @@ public class BOJ17837 {
                 }
             }
         }
-        System.out.println("-1+\n");
+        System.out.println("-1\n");
     }
+
     public static boolean move(int i){
     Horse now = horses[i];
     int nexty = now.y + dy[now.dir];
@@ -74,7 +74,6 @@ public class BOJ17837 {
         ArrayList<Integer> to = map[nexty][nextx];
         int height = from.indexOf(now.id);
         int fromsize = from.size();
-        int tosize = to.size();
         switch (board[nexty][nextx]){
             case 0:
                 for(int q = height;q<fromsize;q++){
