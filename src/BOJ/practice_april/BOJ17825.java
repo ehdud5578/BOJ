@@ -1,4 +1,4 @@
-package BOJ;
+package BOJ.practice_april;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
