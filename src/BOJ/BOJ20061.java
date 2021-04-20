@@ -36,6 +36,13 @@ public class BOJ20061 {
             }
         }
         for(int i = 9;i>5;i--){
+            if(board[i][4]){
+                for(int k = 0;k<4;k++){
+
+                }
+            }
+        }
+        for(int i = 9;i>5;i--){
             boolean ispoint = true;
             for(int j = 0;j<4;j++){
                 if(!board[j][i])
