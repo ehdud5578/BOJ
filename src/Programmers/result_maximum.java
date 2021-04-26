@@ -81,3 +81,4 @@ public class result_maximum {
         }
     }
 }
+// int 만 쓰다가 long 쓰려니까 생각보다 햇갈렸음..
