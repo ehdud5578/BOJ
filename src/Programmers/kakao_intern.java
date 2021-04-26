@@ -22,54 +22,54 @@ public class kakao_intern {
         bw.write(sol);
         bw.flush();
     }
-}
-class Solution {
-    public String solution(int[] numbers, String hand) {
-        String answer = "";
-        int leftx,lefty,rightx,righty;
-        leftx = 0;
-        lefty = 3;
-        righty = 3;
-        rightx = 2;
-        int[] numberlocx,numberlocy;
-        numberlocx = new int[]{1,0,1,2,0,1,2,0,1,2};
-        numberlocy = new int[]{3,0,0,0,1,1,1,2,2,2};
-        for(int i = 0;i<numbers.length;i++){
-            int n = numbers[i];
-            if(n==1||n==4||n==7){
-                answer = answer.concat("L");
-                lefty = numberlocy[n];
-                leftx = numberlocx[n];
-            }else if(n==3||n==6||n==9){
-                answer = answer.concat("R");
-                righty = numberlocy[n];
-                rightx = numberlocx[n];
-            }
-            else{
-                int leftlen = Math.abs(numberlocx[n]-leftx) + Math.abs(numberlocy[n]-lefty);
-                int rightlen = Math.abs(numberlocx[n] - rightx) + Math.abs(numberlocy[n]-righty);
-                if(leftlen==rightlen){
-                    if(hand.equals("right")){
+    static class Solution {
+        public String solution(int[] numbers, String hand) {
+            String answer = "";
+            int leftx,lefty,rightx,righty;
+            leftx = 0;
+            lefty = 3;
+            righty = 3;
+            rightx = 2;
+            int[] numberlocx,numberlocy;
+            numberlocx = new int[]{1,0,1,2,0,1,2,0,1,2};
+            numberlocy = new int[]{3,0,0,0,1,1,1,2,2,2};
+            for(int i = 0;i<numbers.length;i++){
+                int n = numbers[i];
+                if(n==1||n==4||n==7){
+                    answer = answer.concat("L");
+                    lefty = numberlocy[n];
+                    leftx = numberlocx[n];
+                }else if(n==3||n==6||n==9){
+                    answer = answer.concat("R");
+                    righty = numberlocy[n];
+                    rightx = numberlocx[n];
+                }
+                else{
+                    int leftlen = Math.abs(numberlocx[n]-leftx) + Math.abs(numberlocy[n]-lefty);
+                    int rightlen = Math.abs(numberlocx[n] - rightx) + Math.abs(numberlocy[n]-righty);
+                    if(leftlen==rightlen){
+                        if(hand.equals("right")){
+                            answer = answer.concat("R");
+                            righty = numberlocy[n];
+                            rightx = numberlocx[n];
+                        } else{
+                            answer = answer.concat("L");
+                            lefty = numberlocy[n];
+                            leftx = numberlocx[n];
+                        }
+                    }else if(leftlen>rightlen){
                         answer = answer.concat("R");
                         righty = numberlocy[n];
                         rightx = numberlocx[n];
-                    } else{
+                    }else{
                         answer = answer.concat("L");
                         lefty = numberlocy[n];
                         leftx = numberlocx[n];
                     }
-                }else if(leftlen>rightlen){
-                    answer = answer.concat("R");
-                    righty = numberlocy[n];
-                    rightx = numberlocx[n];
-                }else{
-                    answer = answer.concat("L");
-                    lefty = numberlocy[n];
-                    leftx = numberlocx[n];
                 }
-            }
 
+            }
+            return answer;
         }
-        return answer;
     }
 }

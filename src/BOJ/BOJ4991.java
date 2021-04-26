@@ -1,4 +1,4 @@
-package BOJ.practice_4th;
+package BOJ;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
