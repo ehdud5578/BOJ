@@ -54,3 +54,23 @@ public class hotel {
     }
 }
 // 효율 0퍼센트 고치다  말았음
+
+/* 78점짜리
+* import java.util.ArrayList;
+class Solution {
+        public long[] solution(long k, long[] room_number) {
+            ArrayList<Long> array = new ArrayList<>();
+            for(int i = 0;i< room_number.length;i++){
+                long n = room_number[i];
+                while (array.contains(n)){
+                    n+=1;
+                }
+                array.add(n);
+            }
+            long[] answer = new long[array.size()];
+            for(int i = 0;i<array.size();i++){
+                answer[i] = array.get(i);
+            }
+            return answer;
+        }
+    }*/
