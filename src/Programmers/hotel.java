@@ -1,5 +1,7 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+package Programmers;
+
+import java.util.HashMap;
+
 
 public class hotel {
     public static void main(String[] args){
@@ -8,7 +10,30 @@ public class hotel {
             System.out.print(answer[i]+" ");
         }
     }
-    static class Solution {
+    static class Solution{
+        public HashMap<Long,Long> room = new HashMap<>();
+        public long[] solution(long k,long[] room_number){
+            long[] answer = new long[room_number.length];
+            for(int i = 0;i< room_number.length;i++){
+                    answer[i] = findroom(room_number[i]);
+            }
+            return answer;
+        }
+        private long findroom(long n){
+            if(!room.containsKey(n)){
+                room.put(n,n+1);
+                return n;
+            }
+            long nextroom = room.get(n);
+            long empty = findroom(nextroom);
+            room.put(n,empty);
+            return empty;
+        }
+    }
+}
+// 효율 0퍼센트 고치다  말았음
+/*
+* static class Solution {
         public static ArrayList<Long> array,from,to;
         public long[] solution(long k, long[] room_number) {
             array = new ArrayList<>();
@@ -51,10 +76,7 @@ public class hotel {
                 to.add(dest);
             }
         }
-    }
-}
-// 효율 0퍼센트 고치다  말았음
-
+    }*/
 /* 78점짜리
 * import java.util.ArrayList;
 class Solution {
