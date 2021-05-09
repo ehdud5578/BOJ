@@ -2,7 +2,8 @@ package Programmers;
 
 public class kakao5 {
     public static void main(String[] args) {
-        int result = new Solution().solution(3, new int[]{12, 30, 1, 8, 8, 6, 20, 7, 5, 10, 4, 1}, new int[][]{{-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}, {8, 5}, {2, 10}, {3, 0}, {6, 1}, {11, -1}, {7, 4}, {-1, -1}, {-1, -1}});
+        int result = new Solution().solution(3, new int[]{12, 30, 1, 8, 8, 6, 20, 7, 5, 10, 4, 1},
+                new int[][]{{-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}, {8, 5}, {2, 10}, {3, 0}, {6, 1}, {11, -1}, {7, 4}, {-1, -1}, {-1, -1}});
         System.out.println(result);
     }
 
